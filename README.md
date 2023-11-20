@@ -1,83 +1,58 @@
-TECHNOLOGIES TO BE USED FOR THIS PROJECT:
+# MySQL, PHPMyAdmin and Node.js (ready for Express development)
 
-Web front-end should use PUG.
+This will install Mysql and phpmyadmin (including all dependencies to run Phpmyadmin) AND node.js
 
-Web back-end must run via Node.js.
+This receipe is for development - Node.js is run in using supervisor: changes to any file in the app will trigger a rebuild automatically.
 
-Front-end and back-end must communicate via Express.js.
+For security, this receipe uses a .env file for credentials.  A sample is provided in the env-sample file. If using these files for a fresh project, copy the env-sample file to a file called .env.  Do NOT commit the changed .env file into your new project for security reasons (in the node package its included in .gitignore so you can't anyway)
 
-The application must use a MYSQL database for storage.
+In node.js, we use the MySQl2 packages (to avoid problems with MySQL8) and the dotenv package to read the environment variables.
 
-The application must be version controlled using Git.
+Local files are mounted into the container using the 'volumes' directive in the docker-compose.yml for ease of development.
 
-The application must be deployable using Docker.
+### Super-quickstart your new project:
+
+* Make sure that you don't have any other containers running usind docker ps
+* run ```docker-compose up --build```
+
+#### Visit phphmyadmin at:
+
+http://localhost:8081/
+
+#### Visit your express app at:
+
+http://localhost:3000
+
+For reference, see the video at: https://roehampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=6f290a6b-ba94-4729-9632-adcf00ac336e
+
+NB if you are running this on your own computer rather than the azure labs that has been set up for you, you will need to install the following:
+
+* node.js  (windows: https://nodejs.org/en/download/)
+* docker desktop (for windows, this will also prompt you to install linux subsystem for windows https://docs.docker.com/desktop/windows/install/ )
+
+### Whats provided in these scaffolding files?
 
 
-CODE OF CONDUCT:
+  * A docker setup which will provide you with node.js, mysql and phpmyadmin, including the configuration needed so that both node.js AND phpmyadmin can 'see' and connect to your mysql database.  If you don't use docker you'll have to set up and connect each of these components separately.
+  * A basic starting file structure for a node.js app.
+  * A package.json file that will pull in the node.js libraries required and start your app as needed.
+  * A db.js file which provides all the code needed to connect to the mysql database, using the credentials in the .env file, and which provides a query() function that can send queries to the database and receive a result.  In order to use this (ie. interact with the database, you simply need to include this file in any file you create that needs this database interaction) with the following code:
 
-Team Collaboration and Communication:
+```const db = require('./services/db');
+```
 
-•	All team members, when joining an internal team meeting/discussion, must actively participate in the meeting/discussion.
+____
 
-•	Each team member should first listen to the other members’ opinions and ideas during discussions without interrupting them. They should then respectfully agree or disagree and present their own opinion. A vote will be taken on whose idea to proceed with and the idea with the majority vote will be chosen.
+Useful commands:
 
-•	Each team member must maintain open and transparent communication within the team, for instance, whether they will encounter a delay in submitting a particular assigned task due to an unforeseen event occurring. In such a scenario, the team member facing the issue should inform the team at most 24 hours (1 day) prior to the unforeseen event occurring.
+Get a shell in any of the containers
 
-Individual Contribution:
+```bash
+docker exec -it <container name> bash -l
+```
 
-Each team member should: 
+Once in the database container, you can get a MySQL CLI in the usual way
 
-•	Attend all 4 project sprint review meetings with the Software Development 2 module tutor (Dr. Lisa Haskell) and actively participate in these discussions.
-
-•	Regularly contribute to the project's GitHub repository and task board. 
-
-•	Document and commit code changes with clear and meaningful commit messages. 
-
-•	Seek help from team members or the Software Development 2 module delivery team (Lisa and Krystian) if you face any difficulties or need support. This is in case you do not have a laptop, or if a certain software tool is unable to be installed on your personal laptop.
-
-Code Quality:
-
-Each team member should:
-
-•	Follow good code practices, including proper code indentation and meaningful variable and function names.
-
-•	Maintain code comments for all major functions, variables, and non-trivial algorithms.
-
-•	Ensure that the code adheres to Object-Oriented Programming (OOP) and Model-View-Controller (MVC) design techniques.
-
-Task Management:
-
-The task board administrators (Wasif and Hamza) should:
-
-•	Keep the task board updated with the progress of user stories.
-
-•	Assign tasks to individuals and ensure responsibilities are clear.
-
-•	Track and manage user stories to reflect the progress of the project effectively.
-
-Respect for Deadlines:
-
-The team member(s) should:
-
-•	Adhere to the deadlines for each sprint and individual reflection.
-
-•	Inform the team promptly (as early as possible) if you anticipate difficulties in meeting a deadline.
-
-•	Discuss any deadline extensions with the team before making commitments.
-
-Respect for Code of Conduct:
-
-•	Follow the above Code of Conduct defined by the team for conflict resolution.
-
-•	Address breaches of the Code of Conduct professionally and through the appropriate channels.
-
-•	Team members have the right to appeal any dismissal decision within one week, providing suitable evidence.
-
-Technical Deliverables:
-
-All team members should:
-
-•	actively contribute to and monitor the GitHub repository and task board.
-
-•	The website application must be developed using the technologies specified in the coursework specification.
-
+```bash
+mysql -uroot -p<password> 
+```
