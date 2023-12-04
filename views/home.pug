@@ -1,0 +1,180 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Bicycle 
+    style.
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+
+      h1, h2 {
+          text-align: center;
+      }
+
+      nav {
+          background-color: #f0f0f0;
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      nav div {
+          text-align: center;
+          margin: 0;
+      }
+
+      nav div a {
+          text-decoration: none;
+          color: #333;
+      }
+
+      #logo {
+          width: 200px;
+          height: 200px;
+          background-image: url('/img/logo.PNG'); 
+          background-size: cover; 
+          background-position: center; 
+          line-height: 200px;
+          cursor: pointer;
+      }
+
+      #user-dropdown {
+          position: relative;
+          display: inline-block;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+      }
+
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+      }
+
+      .dropdown-content a:hover {
+          background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+
+      main {
+          display: flex;
+          flex-direction: column; 
+          align-items: center; 
+          padding: 20px;
+      }
+
+      #image-slider {
+          position: relative;
+          width: 100%;
+          max-width: 800px; 
+          margin-bottom: 20px;
+      }
+
+      #image-slider img {
+          width: 100%;
+          height: auto;
+      }
+
+      .slider-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 24px;
+          cursor: pointer;
+          background: none;
+          border: none;
+          color: #333;
+      }
+
+      #prev-btn {
+          left: 10px;
+      }
+
+      #next-btn {
+          right: 10px;
+      }
+
+      #about-section {
+          text-align: justify;
+          max-width: 800px;
+          margin-bottom: 20px;
+      }
+
+      footer {
+          background-color: #f0f0f0;
+          padding: 10px;
+          text-align: center;
+      }
+
+  body
+    nav
+      div#logo(href="home")
+      div: a(href="index") Bicycle
+      div: a(href="#") Bicycle Parts
+      div: a(href="#") My Orders
+      div#user-dropdown.dropdown
+        a(href="#") Welcome John Doe &#9662; 
+          .dropdown-content
+            a(href="#") Profile
+            a(href="#") Settings
+            a(href="#") Logout
+    main
+      #image-slider
+        img(src="/img/b2.jpg", alt="Bicycle Image 1")
+        img(src="/img/b3.jpg", alt="Bicycle Image 2")
+        img(src="/img/b4.jpg", alt="Bicycle Image 3")
+        button#prev-btn.slider-btn(onclick="prevSlide()") &#10094; 
+        button#next-btn.slider-btn(onclick="nextSlide()") &#10095; 
+      #about-section
+        h2 About Bicycles
+        p
+          | Bicycles have been a popular mode of transportation for decades. They provide a sustainable and healthy way to commute while also offering a sense of freedom and adventure. 
+          | Whether you're a casual rider or a seasoned cyclist, bicycles play a crucial role in promoting a greener and healthier lifestyle.
+      footer
+        p Contact us: example@email.com | Phone: +123 456 7890
+
+script.
+  var currentSlide = 0;
+
+  function showSlide(n) {
+      var slides = document.querySelectorAll('#image-slider img');
+      if (n >= slides.length) {
+          currentSlide = 0;
+      } else if (n < 0) {
+          currentSlide = slides.length - 1;
+      } else {
+          currentSlide = n;
+      }
+
+      for (var i = 0; i < slides.length; i++) {
+          slides[i].style.display = 'none';
+      }
+
+      slides[currentSlide].style.display = 'block';
+  }
+
+  function nextSlide() {
+      showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+      showSlide(currentSlide - 1);
+  }
+
+  showSlide(currentSlide);
