@@ -10,6 +10,7 @@ app.set('view engine','pug')
 app.use(express.static(path.join(__dirname,'public')))
 
 app.get('/', router)
+app.get('/index', router)
 app.get('/bicycleDetail', router)
 
 
