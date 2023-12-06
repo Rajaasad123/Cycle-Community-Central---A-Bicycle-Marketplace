@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 01:03 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1:3308
+-- Generation Time: Nov 26, 2023 at 12:00 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,19 +27,21 @@ SET time_zone = "+00:00";
 -- Table structure for table `bicycles`
 --
 
-CREATE TABLE `bicycles` (
-  `Id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `bicycles`;
+CREATE TABLE IF NOT EXISTS `bicycles` (
+  `Id` int NOT NULL AUTO_INCREMENT,
   `Title` text NOT NULL,
-  `Quantity` int(11) NOT NULL,
+  `Quantity` int NOT NULL,
   `Condition` text NOT NULL,
   `Description` text NOT NULL,
   `Specification` text NOT NULL,
   `Price` double NOT NULL,
   `Color` text NOT NULL,
   `Size` text NOT NULL,
-  `CSTM` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`CSTM`)),
-  `PurchaseMode` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `CSTM` json NOT NULL,
+  `PurchaseMode` text NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `bicycles`
@@ -73,12 +75,14 @@ INSERT INTO `bicycles` (`Id`, `Title`, `Quantity`, `Condition`, `Description`, `
 -- Table structure for table `comments`
 --
 
-CREATE TABLE `comments` (
-  `Id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `Id` int NOT NULL AUTO_INCREMENT,
   `Comment` text NOT NULL,
-  `Datetime` timestamp NOT NULL DEFAULT current_timestamp(),
-  `bycycleId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `Datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `bycycleId` int NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `comments`
@@ -94,38 +98,6 @@ INSERT INTO `comments` (`Id`, `Comment`, `Datetime`, `bycycleId`) VALUES
 (7, 'Smooth ride on the Adventure Seeker!', '2023-11-25 23:55:06', 22),
 (8, 'Smooth ride on the Vintage Cruiser!', '2023-11-25 23:55:06', 26),
 (9, 'Smooth ride on the Trail Blazer!', '2023-11-25 23:55:06', 14);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `bicycles`
---
-ALTER TABLE `bicycles`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`Id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `bicycles`
---
-ALTER TABLE `bicycles`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

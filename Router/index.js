@@ -3,6 +3,10 @@ const router = express.Router();
 var db = require('../Database/db')
 
 router.get('/', function(req, res) {
+  res.render('home');
+});
+
+router.get('/index', function(req, res) {
   const filters = {
       color: req.query.color || [],
       size: req.query.size || [],

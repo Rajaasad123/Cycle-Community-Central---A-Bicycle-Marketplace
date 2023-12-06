@@ -34,13 +34,15 @@ html(lang="en")
       }
 
      #logo {
-            width: 200px;
-            height: 200px;
-            background-image: url('/img/logo.PNG'); /* Replace with the path to your image */
-            background-size: cover; /* Adjust as needed */
-            background-position: center; /* Adjust as needed */
-            line-height: 200px;
-            }
+          width: 200px;
+          height: 200px;
+          background-image: url('/img/logo.PNG'); 
+          background-size: cover; 
+          background-position: center; 
+          line-height: 200px;
+          cursor: pointer;
+      }
+
 
       main {
           display: flex;
@@ -122,17 +124,51 @@ html(lang="en")
           color: black;
           border: 1px solid #4CAF50;
       }
+      #user-dropdown {
+          position: relative;
+          display: inline-block;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+      }
+
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+      }
+
+      .dropdown-content a:hover {
+          background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+
   body
     nav
-      div#logo
-      div: a(href="#") Bicycle
+      div#logo(href="home")
+      div: a(href="index") Bicycle
       div: a(href="#") Bicycle Parts
       div: a(href="#") My Orders
-      div Welcome John Doe
+      div#user-dropdown.dropdown
+        a(href="#") Welcome John Doe &#9662; 
+          .dropdown-content
+            a(href="#") Profile
+            a(href="#") Settings
+            a(href="#") Logout
     main
       div#filter
         h2 Filters
-        form(action="/", method="get", onsubmit="return true;")
+        form(action="/index", method="get", onsubmit="return true;")
             .filter-section
                 h3 Color
                 label
@@ -176,7 +212,7 @@ html(lang="en")
                     | Rent
                 br
             button(type="submit") Apply Filters
-            a(href="/" class="clearbtn") Clear Filters
+            a(href="/index" class="clearbtn") Clear Filters
       div#listing
         if data.length > 0
           each item in data
