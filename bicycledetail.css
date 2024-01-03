@@ -1,0 +1,192 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+nav {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+
+nav div {
+    text-align: center;
+    margin: 0;
+}
+
+nav div a {
+    text-decoration: none;
+    color: #333;
+}
+
+#logo {
+    width: 200px;
+    height: 200px;
+    background-image: url('/img/logo.PNG'); 
+    background-size: cover; 
+    background-position: center; 
+    line-height: 200px;
+    cursor: pointer;
+}
+
+
+
+main {
+    display: flex;
+    width: 100%;
+}
+
+#photos {
+    flex: 2;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.main-photo {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.additional-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.additional-photo {
+    width: 48%;
+    margin-bottom: 10px;
+}
+
+#details {
+    flex: 8;
+    padding: 10px;
+}
+
+.detail-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.title {
+    margin-top: 10px;
+}
+
+.feedback-section {
+    padding: 10px;
+}
+
+.feedback-heading {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.comment-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.commenter-photo {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    margin-right: 10px;
+}
+
+.comment {
+    margin-top: 10px;
+}
+
+.timestamp {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+}
+
+.add-comment-btn {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    transition-duration: 0.4s;
+    border-radius: 4px;
+}
+
+.add-comment-btn:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    border-radius: 4px;
+}
+
+ button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+
+#user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
