@@ -1,0 +1,44 @@
+main
+      #image-slider
+        img(src="/img/b2.jpg", alt="Bicycle Image 1")
+        img(src="/img/b3.jpg", alt="Bicycle Image 2")
+        img(src="/img/b4.jpg", alt="Bicycle Image 3")
+        button#prev-btn.slider-btn(onclick="prevSlide()") &#10094; 
+        button#next-btn.slider-btn(onclick="nextSlide()") &#10095; 
+      #about-section
+        h2 About Bicycles
+        p
+          | Bicycles have been a popular mode of transportation for decades. They provide a sustainable and healthy way to commute while also offering a sense of freedom and adventure. 
+          | Whether you're a casual rider or a seasoned cyclist, bicycles play a crucial role in promoting a greener and healthier lifestyle.
+      footer
+        p Contact us: example@email.com | Phone: +123 456 7890
+
+script.
+  var currentSlide = 0;
+
+  function showSlide(n) {
+      var slides = document.querySelectorAll('#image-slider img');
+      if (n >= slides.length) {
+          currentSlide = 0;
+      } else if (n < 0) {
+          currentSlide = slides.length - 1;
+      } else {
+          currentSlide = n;
+      }
+
+      for (var i = 0; i < slides.length; i++) {
+          slides[i].style.display = 'none';
+      }
+
+      slides[currentSlide].style.display = 'block';
+  }
+
+  function nextSlide() {
+      showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+      showSlide(currentSlide - 1);
+  }
+
+  showSlide(currentSlide);

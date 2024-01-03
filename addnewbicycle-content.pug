@@ -1,0 +1,49 @@
+main
+  h1 Add New Bicycle Listing
+    form(action="/addnewbicycle", method="post", enctype="multipart/form-data")
+      label(for="title") Title:
+      input(type="text", id="title", name="title", required)
+
+      label(for="quantity") Quantity:
+      input(type="number", id="quantity", name="quantity", required)
+
+      label(for="price") Price:
+      input(type="number", id="price", name="price", required)
+
+      label(for="condition") Condition:
+      input(type="text", id="condition", name="condition", required)
+
+      label(for="description") Description:
+      input(type="text", id="description", name="description", required)
+
+      label(for="specification") Specification:
+      input(type="text", id="specification", name="specification", required)
+
+      label(for="color") Color:
+      .radio-label
+        each color in ['Red', 'Green', 'Blue', 'Black']
+          label(for=`color_${color}`)
+            input(type="radio", id=`color_${color}`, name="color", value=color, required)
+            | #{color}
+      
+      label(for="size") Size:
+      .radio-label
+        each size in ['Small', 'Medium', 'Large']
+          label(for=`size_${size}`)
+            input(type="radio", id=`size_${size}`, name="size", value=size, required)
+            | #{size}
+
+      label Purchase Mode:
+      .radio-label
+        label(for="buyMode")
+          input(type="radio", id="buyMode", name="purchaseMode", value="Buy", required)
+          | Buy 
+          
+        label(for="rentMode")
+          input(type="radio", id="rentMode", name="purchaseMode", value="Rent", required)
+          | Rent
+
+      label(for="image") Image:
+      input(type="file", id="image", name="image", accept="image/*", required)
+
+      button(type="submit") Add Item

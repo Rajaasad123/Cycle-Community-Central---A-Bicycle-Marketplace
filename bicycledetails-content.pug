@@ -1,0 +1,37 @@
+main
+            div#photos
+                img.main-photo(src=data.Image ? `data:image/jpeg;base64,${data.Image}` : "/img/bicycle.jpg", alt="Main Bicycle Photo")
+            div#details
+                .detail-card
+                    h2.title=data.Title
+                    p.title 
+                        b Quantity: 
+                        | #{data.Quantity}
+                    p.title 
+                        b Condition: 
+                        | #{data.Condition}
+                    p.title 
+                        b Description: 
+                        | #{p=data.Description}
+                    p.title 
+                        b Specification: 
+                        | #{data.Specification}
+                    p.title 
+                        b Price: 
+                        | #{data.Price}
+                        |  $
+                    button(type="button")=data.PurchaseMode
+                div.feedback-section
+                    .feedback-heading Feedback
+                    if comments.length > 0
+                        each comment in comments
+                            .comment-card
+                                img.commenter-photo(src="/img/user.png", alt="Commenter Photo")
+                                div
+                                p.comment=comment.Comment
+                                p.timestamp=comment.Datetime
+                    else
+                        .comment-card
+                            div
+                            p.comment No comments
+                    button.add-comment-btn(type="button") Add Comment

@@ -1,0 +1,8 @@
+main
+  h1 User Profile
+    form(action="/profile", method="post")
+      label(for="name") Name:
+      input(type="text", id="name", name="name", value=user.name, required, disabled)
+
+      label(for="email") Email:
+      input(type="email", id="email", name="email", value=user.email, required, disabled)
