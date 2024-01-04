@@ -179,6 +179,10 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', function(req, res) {
+  if (!req.session.user) {
+    return res.redirect('/');
+  }
+
   res.render('profile', { user: req.session.user });
 });
 
@@ -219,5 +223,46 @@ router.post('/addnewbicycle', upload.single('image'), (req, res) => {
   });
 });
 
+router.post('/profile', (req, res) => {
+  const userId = req.session.user.id;
+  
+  const { name, email } = req.body;
+
+  const updateUserQuery = 'UPDATE users SET name = ?, email = ? WHERE id = ?';
+  const updateUserValues = [name, email, userId];
+
+  db.query(updateUserQuery, updateUserValues, (error, results, fields) => {
+    if (error) {
+      console.error('Error updating user profile:', error);
+      const script = '<script>alert("Error updating user profile"); window.location.href = "/profile";</script>';
+      res.send(script);
+    }
+
+    console.log('User profile updated successfully!');
+
+    req.session.user = null;
+
+    const script = '<script>alert("Profile updated successfully!"); window.location.href = "/profile";</script>';
+    res.send(script);
+  });
+});
+
+
+router.get('/deletebycycle', function (req, res) {
+  var id = req.query.id;
+  let query = `
+    Delete
+    FROM bicycles
+    WHERE Id = ?
+  `;
+
+  db.query(query, [id], (error, results, fields) => {
+    if (error) throw error;
+  });
+
+  const script = '<script>alert("Item Deleted!"); window.location.href = "/index";</script>';
+    res.send(script);
+
+});
 
 module.exports = router;
