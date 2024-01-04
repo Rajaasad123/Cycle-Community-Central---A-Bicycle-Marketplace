@@ -1,9 +1,23 @@
 const express = require('express');
+const session = require('express-session');
+const crypto = require('crypto');
+const multer = require('multer');
+
+const upload = multer({ storage: multer.memoryStorage() });
+const secretKey = crypto.randomBytes(32).toString('hex');
 const router = express.Router();
+
+router.use(session({
+  secret: secretKey,
+  resave: true,
+  saveUninitialized: true
+}));
+
+
 var db = require('../Database/db')
 
 router.get('/', function(req, res) {
-  res.render('home');
+  res.render('home', { user: req.session.user });
 });
 
 router.get('/index', function(req, res) {
@@ -36,11 +50,11 @@ router.get('/index', function(req, res) {
         data: results,
         colorFilters: colorFilters,
         sizeFilters: sizeFilters,
-        purchaseModeFilters: purchaseModeFilters
+        purchaseModeFilters: purchaseModeFilters, 
+        user: req.session.user,
     });
   });
 });
-
 
 router.get('/bicycleDetail', function (req, res) {
   var id = req.query.id;
@@ -64,6 +78,7 @@ router.get('/bicycleDetail', function (req, res) {
         Specification: results[0].Specification,
         Price: results[0].Price,
         PurchaseMode: results[0].PurchaseMode,
+        Image: results[0].Image
       };
 
       const commentsData = results
@@ -82,14 +97,127 @@ router.get('/bicycleDetail', function (req, res) {
     
 
 
-      res.render('bicycledetail', { data: bicycleData, comments: commentsData });
+      res.render('bicycledetail', { data: bicycleData, comments: commentsData,user: req.session.user, });
     } else {
       res.send('No bicycle found with the specified ID');
     }
   });
 });
 
+router.get('/register', function(req, res) {
+  res.render('register');
+});
 
+router.post('/register', (req, res) => {
+  const { name, email, password, confirmPassword } = req.body;
+
+  if (password !== confirmPassword) {
+    return res.send('<script>alert("Password does not match"); window.location.href = "/register";</script>');
+  }
+
+  const insertUserQuery = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+  const insertUserValues = [name, email, password];
+
+  db.query(insertUserQuery, insertUserValues, (error, results, fields) => {
+    if (error) {
+      console.error('Error inserting user:', error);
+      return res.send('Registration failed!');
+    }
+
+    console.log('User registered successfully!');
+    const script = '<script>alert("Registration successful!"); window.location.href = "/";</script>';
+    res.send(script);
+  });
+});
+
+router.get('/login', function(req, res) {
+  res.render('login');
+});
+
+router.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  const getUserQuery = 'SELECT * FROM users WHERE email = ?';
+  db.query(getUserQuery, [email], (error, results, fields) => {
+    if (error) {
+      console.error('Error getting user:', error);
+      return res.send('<script>alert("Login Failed"); window.location.href = "/login";</script>');
+    }
+
+    if (results.length === 0) {
+      return res.send('<script>alert("User not found"); window.location.href = "/login";</script>');
+    }
+
+    const user = results[0];
+
+    if (password !== user.password) {
+      return res.send('<script>alert("Invalid password"); window.location.href = "/login";</script>');
+    }
+
+    req.session.user = {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    };
+
+    console.log('User logged in successfully!');
+    const script = '<script>alert("Login successful!"); window.location.href = "/";</script>';
+    res.send(script);
+  });
+});
+
+router.get('/logout', (req, res) => {
+  
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      return res.send('<script>alert("Login Failed"); window.location.href = "/login";</script>');
+    } else {
+      res.redirect('/');  
+    }
+  });
+});
+
+router.get('/profile', function(req, res) {
+  res.render('profile', { user: req.session.user });
+});
+
+router.get('/addnewbicycle', function(req, res) {
+  res.render('addnewbicycle', { user: req.session.user });
+});
+
+router.post('/addnewbicycle', upload.single('image'), (req, res) => {
+  const {
+    title,
+    quantity,
+    price,
+    condition,
+    description,
+    specification,
+    color,
+    size,
+    purchaseMode,
+  } = req.body;
+
+  const image = req.file ? req.file.buffer.toString('base64') : null;
+
+  const insertItemQuery = `
+  INSERT INTO bicycles (Title, Quantity, Price, \`Condition\`, Description, Specification, Color, Size, PurchaseMode, Image)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+`;
+
+  const insertItemValues = [title, quantity, price, condition, description, specification, color, size, purchaseMode,image];
+
+  db.query(insertItemQuery, insertItemValues, (error, results) => {
+    if (error) {
+      console.error('Error inserting item:', error);
+      return res.send('<script>alert("Error inserting item!"); window.location.href = "/addnewbicycle";</script>'); 
+    }
+
+    console.log('Item inserted successfully!');
+    res.send('<script>alert("Item inserted successfully!"); window.location.href = "/addnewbicycle";</script>'); 
+  });
+});
 
 
 module.exports = router;
