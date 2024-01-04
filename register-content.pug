@@ -1,16 +1,35 @@
 main
-  h1 User Registration
-    form(action="/register", method="post")
-      label(for="name") Name:
-      input(type="text", id="name", name="name", required)
+// [1] Create a form for user registration
+h1 User Registration
+  // [2]
+  form(action="/register", method="post")
+    // [4] Input field for user name
+    label(for="name") Name:
+    // [3]
+    input(type="text", id="name", name="name", required)
 
-      label(for="email") Email:
-      input(type="email", id="email", name="email", required)
+    // [4] Input field for user email
+    label(for="email") Email:
+    // [3]
+    input(type="email", id="email", name="email", required)
 
-      label(for="password") Password:
-      input(type="password", id="password", name="password", required)
+    // [4] Input field for user password
+    label(for="password") Password:
+    // [3]
+    input(type="password", id="password", name="password", required)
 
-      label(for="confirmPassword") Confirm Password:
-      input(type="password", id="confirmPassword", name="confirmPassword", required)
+    // [4] Input field for confirming user password
+    label(for="confirmPassword") Confirm Password:
+    // [3]
+    input(type="password", id="confirmPassword", name="confirmPassword", required)
 
-      button(type="submit") Register
+    // [5] Submit button for user registration
+    button(type="submit") Register
+
+// REFERENCES:
+
+// [1] “HTML h1 to h6 tag.” [Online]. Available: https://www.w3schools.com/tags/tag_hn.asp. [Accessed: 04-Jan-2024]
+// [2] “HTML form tag.” [Online]. Available: https://www.w3schools.com/tags/tag_form.asp. [Accessed: 04-Jan-2024]
+// [3] “HTML input tag.” [Online]. Available: https://www.w3schools.com/tags/tag_input.asp. [Accessed: 04-Jan-2024]
+// [4] “HTML label tag.” [Online]. Available: https://www.w3schools.com/tags/tag_label.asp. [Accessed: 04-Jan-2024]
+// [5] “HTML button tag.” [Online]. Available: https://www.w3schools.com/tags/tag_button.asp. [Accessed: 27-Dec-2023]

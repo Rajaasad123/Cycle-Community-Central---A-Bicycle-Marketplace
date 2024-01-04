@@ -1,8 +1,25 @@
 main
+  // [1] Create a form for updating user profile
   h1 User Profile
+    // [2]
     form(action="/profile", method="post")
+      // [4] Input field for user name
       label(for="name") Name:
-      input(type="text", id="name", name="name", value=user.name, required, disabled)
+      // [3]
+      input(type="text", id="name", name="name", value=user.name, required)
 
+      // [4] Input field for user email
       label(for="email") Email:
-      input(type="email", id="email", name="email", value=user.email, required, disabled)
+      // [3]
+      input(type="email", id="email", name="email", value=user.email, required)
+
+      // [5] Submit button for updating the profile
+      button(type="submit") Update
+
+// REFERENCES:
+
+// [1] “HTML h1 to h6 tag.” [Online]. Available: https://www.w3schools.com/tags/tag_hn.asp. [Accessed: 04-Jan-2024]
+// [2] “HTML form tag.” [Online]. Available: https://www.w3schools.com/tags/tag_form.asp. [Accessed: 04-Jan-2024]
+// [3] “HTML input tag.” [Online]. Available: https://www.w3schools.com/tags/tag_input.asp. [Accessed: 04-Jan-2024]
+// [4] “HTML label tag.” [Online]. Available: https://www.w3schools.com/tags/tag_label.asp. [Accessed: 04-Jan-2024]
+// [5] “HTML button tag.” [Online]. Available: https://www.w3schools.com/tags/tag_button.asp. [Accessed: 27-Dec-2023]

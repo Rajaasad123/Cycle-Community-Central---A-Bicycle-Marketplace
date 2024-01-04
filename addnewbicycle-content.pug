@@ -1,49 +1,96 @@
+// Main heading
 main
   h1 Add New Bicycle Listing
-    form(action="/addnewbicycle", method="post", enctype="multipart/form-data")
-      label(for="title") Title:
-      input(type="text", id="title", name="title", required)
 
-      label(for="quantity") Quantity:
-      input(type="number", id="quantity", name="quantity", required)
+  // [1] [4] Form for adding a new bicycle listing
+  form(action="/addnewbicycle", method="post", enctype="multipart/form-data")
 
-      label(for="price") Price:
-      input(type="number", id="price", name="price", required)
+    // Input fields for various bicycle details
+    // [2]
+    label(for="title") Title: 
+    // [3] [5] [6]
+    input(type="text", id="title", name="title", required)
 
-      label(for="condition") Condition:
-      input(type="text", id="condition", name="condition", required)
+    // [2]
+    label(for="quantity") Quantity: 
+    // [3] [5] [6]
+    input(type="number", id="quantity", name="quantity", required)
 
-      label(for="description") Description:
-      input(type="text", id="description", name="description", required)
+    // [2]
+    label(for="price") Price:
+    // [3] [5] [6]
+    input(type="number", id="price", name="price", required)
 
-      label(for="specification") Specification:
-      input(type="text", id="specification", name="specification", required)
+    // [2]
+    label(for="condition") Condition:
+    // [3] [5] [6]
+    input(type="text", id="condition", name="condition", required)
 
-      label(for="color") Color:
+    // [2]
+    label(for="description") Description:
+    // [3] [5] [6]
+    input(type="text", id="description", name="description", required)
+
+    // [2]
+    label(for="specification") Specification:
+    // [3] [5] [6]
+    input(type="text", id="specification", name="specification", required)
+
+    // [2]
+    label(for="color") Color:
+
+      // Radio buttons for selecting bicycle color
       .radio-label
         each color in ['Red', 'Green', 'Blue', 'Black']
+          // [2]
           label(for=`color_${color}`)
+            // [3] [5] [6]
             input(type="radio", id=`color_${color}`, name="color", value=color, required)
             | #{color}
-      
-      label(for="size") Size:
+
+    // [2]
+    label(for="size") Size:
+
+      // Radio buttons for selecting bicycle size
       .radio-label
         each size in ['Small', 'Medium', 'Large']
+          // [2]
           label(for=`size_${size}`)
+            // [3] [5] [6]
             input(type="radio", id=`size_${size}`, name="size", value=size, required)
             | #{size}
 
-      label Purchase Mode:
-      .radio-label
-        label(for="buyMode")
-          input(type="radio", id="buyMode", name="purchaseMode", value="Buy", required)
-          | Buy 
-          
-        label(for="rentMode")
-          input(type="radio", id="rentMode", name="purchaseMode", value="Rent", required)
-          | Rent
+    // Radio buttons for selecting purchase mode
+    // [2]
+    label Purchase Mode:
+    .radio-label
+      // [2]
+      label(for="buyMode")
+        // [3] [5] [6]
+        input(type="radio", id="buyMode", name="purchaseMode", value="Buy", required)
+        | Buy 
+      // [2]
+      label(for="rentMode")
+        // [3] [5] [6]
+        input(type="radio", id="rentMode", name="purchaseMode", value="Rent", required)
+        | Rent
 
-      label(for="image") Image:
-      input(type="file", id="image", name="image", accept="image/*", required)
+    // File input for uploading an image
+    // [2]
+    label(for="image") Image:
+    // [3] [5] [6] [8]
+    input(type="file", id="image", name="image", accept="image/*", required)
 
-      button(type="submit") Add Item
+    // [7] Submit button
+    button(type="submit") Add Item
+
+//REFERENCES:
+
+// [1] “Attributes – Pug” [Online]. Available: https://pugjs.org/language/attributes.html. [Accessed: 04-Jan-2024]
+// [2] “HTML label tag.” [Online]. Available: https://www.w3schools.com/tags/tag_label.asp. [Accessed: 04-Jan-2024]
+// [3] “HTML input tag.” [Online]. Available: https://www.w3schools.com/tags/tag_input.asp. [Accessed: 04-Jan-2024]
+// [4] “HTML form tag.” [Online]. Available: https://www.w3schools.com/tags/tag_form.asp. [Accessed: 04-Jan-2024]
+// [5] “HTML Input Types.” [Online]. Available: https://www.w3schools.com/html/html_form_input_types.asp. [Accessed: 04-Jan-2024]
+// [6] “JavaScript Form Validation.” [Online]. Available: https://www.w3schools.com/js/js_validation.asp. [Accessed: 04-Jan-2024]
+// [7] “HTML button tag.” [Online]. Available: https://www.w3schools.com/tags/tag_button.asp. [Accessed: 27-Dec-2023]
+// [8] “HTML input type="file".” [Online]. Available: https://www.w3schools.com/tags/att_input_type_file.asp. [Accessed: 04-Jan-2024]
