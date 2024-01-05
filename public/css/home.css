@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0;/* [7] */
+    padding: 0;/* [4] */
 }
 
 h1, h2 {
@@ -10,30 +10,30 @@ h1, h2 {
 
 nav {
     background-color: #f0f0f0;
-    padding: 10px;
+    padding: 10px;/* [4] */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;/* [8] */
 }
 
 nav div {
     text-align: center;
-    margin: 0;
+    margin: 0;/* [7] */
 }
 
 nav div a {
-    text-decoration: none;
+    text-decoration: none; /* [1] */
     color: #333;
 }
 
 #logo {
-    width: 200px;
+    width: 200px;/* [5] */
     height: 200px;
-    background-image: url('/img/logo.PNG'); 
+    background-image: url('/img/logo.PNG'); /* [2] */
     background-size: cover; 
     background-position: center; 
     line-height: 200px;
-    cursor: pointer;
+    cursor: pointer;/* [3] */
 }
 
 #user-dropdown {
@@ -45,15 +45,15 @@ nav div a {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 160px; /* [5] */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+    padding: 12px 16px;/* [4] */
+    text-decoration: none; [2]
     display: block;
 }
 
@@ -68,28 +68,28 @@ nav div a {
 main {
     display: flex;
     flex-direction: column; 
-    align-items: center; 
-    padding: 20px;
+    align-items: center; /* [8] */
+    padding: 20px;/* [4] */
 }
 
 #image-slider {
     position: relative;
-    width: 100%;
-    max-width: 800px; 
-    margin-bottom: 20px;
+    width: 100%;/* [5] */
+    max-width: 800px; /* [5] */
+    margin-bottom: 20px;/* [7] */
 }
 
 #image-slider img {
-    width: 100%;
+    width: 100%;/* [5] */
     height: auto;
 }
 
 .slider-btn {
     position: absolute;
-    top: 50%;
+    top: 50%;/* [9] */
     transform: translateY(-50%);
     font-size: 24px;
-    cursor: pointer;
+    cursor: pointer;/* [3] */
     background: none;
     border: none;
     color: #333;
@@ -105,12 +105,32 @@ main {
 
 #about-section {
     text-align: justify;
-    max-width: 800px;
-    margin-bottom: 20px;
+    max-width: 800px;/* [5] */
+    margin-bottom: 20px;/* [7] */
 }
 
 footer {
     background-color: #f0f0f0;
-    padding: 10px;
+    padding: 10px;/* [4] */
     text-align: center;
 }
+ /* Refrences 
+ [1] “CSS text-decoration property.” [Online]. Available: https://www.w3schools.com/cssref/pr_text_text-decoration.php. [Accessed: 28-Dec-2023]
+
+[2] “CSS background-image property.” [Online]. Available: https://www.w3schools.com/cssref/pr_background-image.php. [Accessed: 28-Dec-2023]
+
+[3] “CSS cursor property.” [Online]. Available: https://www.w3schools.com/cssref/pr_class_cursor.php. [Accessed: 28-Dec-2023]
+
+[4] “CSS Padding.” [Online]. Available: https://www.w3schools.com/css/css_padding.asp. [Accessed: 28-Dec-2023]
+
+[5] “CSS width property.” [Online]. Available: https://www.w3schools.com/cssref/pr_dim_width.php. [Accessed: 28-Dec-2023]
+
+[6] “CSS Padding.” [Online]. Available: https://www.w3schools.com/css/css_padding.asp. [Accessed: 28-Dec-2023]
+
+[7] “CSS Margin.” [Online]. Available: https://www.w3schools.com/css/css_margin.asp. [Accessed: 28-Dec-2023]
+
+[8]
+“CSS align-items property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_align-items.php. [Accessed: 05-Jan-2024]
+
+[9]
+“CSS top property.” [Online]. Available: https://www.w3schools.com/cssref/pr_pos_top.php. [Accessed: 05-Jan-2024]
