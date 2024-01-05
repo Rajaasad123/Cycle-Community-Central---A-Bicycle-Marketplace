@@ -1,28 +1,40 @@
-version: '3.3'
+version: '3.8'
 services:
-  web:
-    build:
-      context: ./
-    volumes:
-      - .:/src
-    command: supervisor -e '.' index.js
+  app:
+    build: .
     ports:
-      - "3000:3000"
+      - "5000:5000" 
+    volumes:
+      - .:/usr/src/app 
     depends_on:
       - db
+    environment:
+      MYSQL_HOST: db 
+      MYSQL_PORT: 3306
+      MYSQL_USER: root 
+      MYSQL_PASS: my-secret-pw 
+      MYSQL_DB: cyclecommunity 
+
   db:
-    image: mysql
-    restart: always
-    env_file:
-      - ./.env
+    image: mysql:latest
     ports:
-      - "3308:3306"
+      - "3307:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw 
+      MYSQL_DATABASE: cyclecommunity 
+
     volumes:
-      - ./db:/var/lib/mysql
+      - db-data:/var/lib/mysql 
+
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    restart: always
-    env_file:
-      - ./.env
+    image: phpmyadmin/phpmyadmin
     ports:
-      - "8081:80"
+      - "8080:80" 
+    environment:
+      PMA_HOST: db 
+      PMA_PORT: 3306 
+    depends_on:
+      - db
+
+volumes:
+  db-data: 

@@ -1,0 +1,78 @@
+// Main section containing photos and details
+main
+    // [1] Section for displaying main bicycle photo
+    div#photos
+        // [2]
+        img.main-photo(src=data.Image ? `data:image/jpeg;base64,${data.Image}` : "/img/bicycle.jpg", alt="Main Bicycle Photo")
+
+    // [1] Section for displaying details of the bicycle
+    div#details
+        .detail-card
+            // [3]
+            h2.title=data.Title
+            // [4]
+            p.title 
+                // [5]
+                b Quantity: 
+                | #{data.Quantity}
+            // [4]
+            p.title 
+                // [5]
+                b Condition: 
+                | #{data.Condition}
+            // [4]
+            p.title 
+                // [5]
+                b Description: 
+                | #{p=data.Description}
+            // [4]
+            p.title 
+                // [5]
+                b Specification: 
+                | #{data.Specification}
+            // [4]
+            p.title 
+                // [5]
+                b Price: 
+                | #{data.Price}
+                |  $
+
+            // [6] Button for purchasing the bicycle
+            button(type="button")=data.PurchaseMode
+
+        // [1] Section for displaying feedback/comments
+        div.feedback-section
+            .feedback-heading Feedback
+
+            // [8] Conditional rendering of comments
+            if comments.length > 0
+                // [7]
+                each comment in comments
+                    .comment-card
+                        // [2]
+                        img.commenter-photo(src="/img/user.png", alt="Commenter Photo")
+                        // [1]
+                        div
+                            // [4]
+                            p.comment=comment.Comment
+                            p.timestamp=comment.Datetime
+            else
+                .comment-card
+                    // [1]
+                    div
+                    // [4]
+                    p.comment No comments
+
+            // [6] Button for adding a new comment
+            button.add-comment-btn(type="button") Add Comment
+
+//REFERENCES:
+
+// [1] “HTML div tag.” [Online]. Available: https://www.w3schools.com/tags/tag_div.ASP. [Accessed: 27-Dec-2023]
+// [2] “HTML img tag.” [Online]. Available: https://www.w3schools.com/tags/tag_img.asp. [Accessed: 27-Dec-2023]
+// [3] “HTML h1 to h6 tag.” [Online]. Available: https://www.w3schools.com/tags/tag_hn.asp. [Accessed: 04-Jan-2024]
+// [4] “HTML p tag.” [Online]. Available: https://www.w3schools.com/tags/tag_p.asp. [Accessed: 27-Dec-2023]
+// [5] “HTML b Tag.” [Online]. Available: https://www.w3schools.com/tags/tag_b.asp. [Accessed: 27-Dec-2023]
+// [6] “HTML button tag.” [Online]. Available: https://www.w3schools.com/tags/tag_button.asp. [Accessed: 27-Dec-2023]
+// [7] “Iteration – Pug” [Online]. Available: https://pugjs.org/language/iteration.html. [Accessed: 27-Dec-2023]
+// [8] “Conditionals – Pug” [Online]. Available: https://pugjs.org/language/conditionals.html. [Accessed: 04-Jan-2024]

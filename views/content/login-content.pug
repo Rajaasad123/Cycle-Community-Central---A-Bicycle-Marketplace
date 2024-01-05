@@ -1,0 +1,26 @@
+main
+  // [1] Create a form for user login
+  h1 User Login
+    // [2]
+    form(action="/login", method="post")
+      // Input field for email
+      // [4]
+      label(for="email") Email:
+      // [3]
+      input(type="email", id="email", name="email", required)
+
+      // [4] Input field for password
+      label(for="password") Password:
+      // [3]
+      input(type="password", id="password", name="password", required)
+
+      // [5] Submit button for login
+      button(type="submit") Login
+
+// REFERENCES:
+
+// [1] “HTML h1 to h6 tag.” [Online]. Available: https://www.w3schools.com/tags/tag_hn.asp. [Accessed: 04-Jan-2024]
+// [2] “HTML form tag.” [Online]. Available: https://www.w3schools.com/tags/tag_form.asp. [Accessed: 04-Jan-2024]
+// [3] “HTML input tag.” [Online]. Available: https://www.w3schools.com/tags/tag_input.asp. [Accessed: 04-Jan-2024]
+// [4] “HTML label tag.” [Online]. Available: https://www.w3schools.com/tags/tag_label.asp. [Accessed: 04-Jan-2024]
+// [5] “HTML button tag.” [Online]. Available: https://www.w3schools.com/tags/tag_button.asp. [Accessed: 27-Dec-2023]

@@ -1,0 +1,214 @@
+/* Set font family, margin, and padding for the entire body */
+body {
+    font-family: Arial, sans-serif; /* [1] Set font family */
+    margin: 0; /* [2] Remove default margin */
+    padding: 0; /* [3] Remove default padding */
+}
+
+/* Center-align h1 and h2 elements */
+h1, h2 {
+    text-align: center; /* [4] */
+}
+
+/* [22] Styling for the navigation bar */
+nav {
+    background-color: #f0f0f0; /* [5] Background color */
+    padding: 10px; /* [3] Padding */
+    display: flex; /* [6] Use flexbox for layout */
+    justify-content: space-around; /* [7] Distribute space around child elements */
+    align-items: center; /* [7] Center-align items vertically */
+}
+
+/* [22] Styling for navigation bar div elements */
+nav div {
+    text-align: center; /* [4] Center-align text */
+    margin: 0; /* [2] Remove default margin */
+}
+
+/* [22] Styling for navigation bar anchor elements */
+nav div a {
+    text-decoration: none; /* [8] Remove underlines from links */
+    color: #333; /* [9] Set text color */
+}
+
+/* Styling for the logo */
+#logo {
+    width: 200px; /* [13] Set width */
+    height: 200px; /* Set height */
+    background-image: url('/img/logo.PNG'); /* [10] Set background image */
+    background-size: cover; /* [11] Scale background image to cover entire element */
+    background-position: center; /*  Center background image */
+    line-height: 200px; /* Set line height to vertically center content */
+    cursor: pointer; /* [12] Set cursor to pointer on hover */
+}
+
+/* Styling for the main section */
+main {
+    display: flex; /* [6] Use flexbox for layout */
+}
+
+/* Styling for the filter section */
+#filter {
+    flex: 1; /* [16] Set flex property to 1 for flexible layout */
+    background-color: #f0f0f0; /* [5] Background color */
+    padding: 10px; /* [3] Padding */
+}
+
+/* Styling for the listing section */
+#listing {
+    flex: 3; /* [16] Set flex property to 3 for flexible layout */
+    padding: 10px; /* [3] Padding */
+}
+
+/* Styling for filter section h2 elements */
+.filter-section h2 {
+    margin-top: 0; /* [2] Remove top margin */
+}
+
+/* Styling for listing card elements */
+.listing-card {
+    border: 1px solid #ccc; /* [17] Border */
+    margin-bottom: 10px; /* [14] Margin bottom */
+    padding: 10px; /* [3] Padding */
+    display: flex; /* [6] Use flexbox for layout */
+}
+
+/* Styling for bicycle image within listing card */
+.bicycle-image {
+    flex: 1; /* [16] Set flex property to 1 for flexible layout */
+}
+
+/* Styling for details section within listing card */
+.details {
+    flex: 2; /* [16] Set flex property to 2 for flexible layout */
+    padding: 0 10px; /* [3] Padding */
+    display: flex; /* [6] Use flexbox for layout */
+    flex-direction: column; /* Set flex direction to column */
+    justify-content: space-between; /* [7] Distribute space between child elements */
+}
+
+/* Styling for clear button */
+.clearbtn {
+    background-color: #FF0000; /* [5] Background color */
+    color: white; /* [9] Text color */
+    cursor: pointer; /* [12] Set cursor to pointer */
+    border: none; /* [17] Remove border */
+    padding: 8px 12px; /* [3] Padding */
+    text-align: center; /* [4] Text alignment */
+    text-decoration: none; /* [8] Remove text decoration */
+    display: inline-block; /* [26] Display as inline block */
+    font-size: 16px; /* [18] Font size */
+    margin: 4px 2px; /* [2] Margin */
+    transition-duration: 0.4s; /* [20] Set transition duration */
+    border-radius: 4px; /* [23] Set border radius */
+}
+
+.clearbtn:hover {
+    background-color: white; /* [5] Background color on hover */
+    color: black; /* [9] Text color on hover */
+    border: 1px solid #FF0000; /* [17] Border on hover */
+}
+
+/* Styling for item details button and generic button */
+.btnitemDetails, button {
+    background-color: #4CAF50; /* [5] Background color */
+    color: white; /* [9] Text color */
+    cursor: pointer; /* [12] Set cursor to pointer */
+    border: none; /* [17] Remove border */
+    padding: 8px 12px; /* [3] Padding */
+    text-align: center; /* [4] Text alignment */
+    text-decoration: none; /* [8] Remove text decoration */
+    display: inline-block; /* [26] Display as inline block */
+    font-size: 16px; /* [18] Font size */
+    margin: 4px 2px; /* [2] Margin */
+    transition-duration: 0.4s; /* [20] Set transition duration */
+    border-radius: 4px; /* [23] Set border radius */
+}
+
+.btnitemDetails:hover, button:hover {
+    background-color: white; /* [5] Background color on hover */
+    color: black; /* [9] Text color on hover */
+    border: 1px solid #4CAF50; /* [17] Border on hover */
+}
+
+/* Styling for user dropdown and its content */
+#user-dropdown {
+    position: relative; /* [24] Set position relative */
+    display: inline-block; /* [26] Display as inline block */
+}
+/* [21] */
+.dropdown-content {
+    display: none; /* [26] Hide dropdown content by default */
+    position: absolute; /* [24] Set position absolutely within the relative parent */
+    background-color: #f9f9f9; /* [5] Background color */
+    min-width: 160px; /* Set minimum width */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* [25] Add box shadow */
+    z-index: 1; /* Set z-index to appear above other elements */
+}
+
+/* [21] */
+.dropdown-content a {
+    color: black; /* [9] Text color for dropdown links */
+    padding: 12px 16px; /* [3] Padding for dropdown links */
+    text-decoration: none; /* [8] Remove text decoration */
+    display: block; /* [26] Display as block */
+}
+
+/* [21] */
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* [5] Background color on hover */
+}
+
+/* [21] */
+.dropdown:hover .dropdown-content {
+    display: block; /* [26] Display dropdown content on hover */
+}
+
+.btnDelete {
+    background-color: red; /* [5] Background color */
+    color: white; /* [9] Text color */
+    cursor: pointer; /* [12] Set cursor to pointer */
+    border: none; /* [17] Remove border */
+    padding: 8px 12px; /* [3] Padding */
+    text-align: center; /* [4] Text alignment */
+    text-decoration: none; /* [8] Remove text decoration */
+    display: inline-block; /* [26] Display as inline block */
+    font-size: 16px; /* [18] Font size */
+    margin: 4px 2px; /* [2] Margin */
+    transition-duration: 0.4s; /* [20] Set transition duration */
+    border-radius: 4px; /* [23] Set border radius */
+}
+
+.btnDelete:hover {
+    background-color: white; /* [5] Background color */
+    color: black; /* [9] Text color */
+    border: 1px solid #4CAF50; /* [17] Border */
+}
+
+/*REFERENCES:
+[1] “CSS Fonts.” [Online]. Available: https://www.w3schools.com/css/css_font.asp. [Accessed: 28-Dec-2023]
+[2] “CSS Margin.” [Online]. Available: https://www.w3schools.com/css/css_margin.asp. [Accessed: 28-Dec-2023]
+[3] “CSS Padding.” [Online]. Available: https://www.w3schools.com/css/css_padding.asp. [Accessed: 28-Dec-2023]
+[4] “CSS text-align property.” [Online]. Available: https://www.w3schools.com/cssref/pr_text_text-align.php. [Accessed: 28-Dec-2023]
+[5] “CSS background-color property.” [Online]. Available: https://www.w3schools.com/cssref/pr_background-color.php. [Accessed: 28-Dec-2023]
+[6] “CSS Flexbox (Flexible Box).” [Online]. Available: https://www.w3schools.com/css/css3_flexbox.asp. [Accessed: 28-Dec-2023]
+[7] “CSS Flexbox Container.” [Online]. Available: https://www.w3schools.com/css/css3_flexbox_container.asp. [Accessed: 28-Dec-2023]
+[8] “CSS text-decoration property.” [Online]. Available: https://www.w3schools.com/cssref/pr_text_text-decoration.php. [Accessed: 28-Dec-2023]
+[9] “CSS Text.” [Online]. Available: https://www.w3schools.com/css/css_text.asp. [Accessed: 28-Dec-2023]
+[10] “CSS background-image property.” [Online]. Available: https://www.w3schools.com/cssref/pr_background-image.php. [Accessed: 28-Dec-2023]
+[11] “CSS background-size property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_background-size.php. [Accessed: 28-Dec-2023]
+[12] “CSS cursor property.” [Online]. Available: https://www.w3schools.com/cssref/pr_class_cursor.php. [Accessed: 28-Dec-2023]
+[13] “CSS width property.” [Online]. Available: https://www.w3schools.com/cssref/pr_dim_width.php. [Accessed: 28-Dec-2023]
+[14] “CSS margin-bottom property.” [Online]. Available: https://www.w3schools.com/cssref/pr_margin-bottom.php. [Accessed: 28-Dec-2023]
+[15] “CSS flex-wrap property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_flex-wrap.php. [Accessed: 28-Dec-2023]
+[16] “CSS Flexbox Items.” [Online]. Available: https://www.w3schools.com/css/css3_flexbox_items.asp. [Accessed: 28-Dec-2023]
+[17] “CSS Borders - Shorthand Property.” [Online]. Available: https://www.w3schools.com/css/css_border_shorthand.asp. [Accessed: 28-Dec-2023]
+[18] “CSS Font Size.” [Online]. Available: https://www.w3schools.com/css/css_font_size.asp. [Accessed: 28-Dec-2023]"
+[19] “CSS Buttons.” [Online]. Available: https://www.w3schools.com/css/css3_buttons.asp. [Accessed: 28-Dec-2023]
+[20] “CSS Transitions.” [Online]. Available: https://www.w3schools.com/css/css3_transitions.asp. [Accessed: 28-Dec-2023]
+[21] “CSS Dropdowns.” [Online]. Available: https://www.w3schools.com/css/css_dropdowns.asp. [Accessed: 28-Dec-2023]
+[22] “CSS Navigation Bar.” [Online]. Available: https://www.w3schools.com/css/css_navbar.asp. [Accessed: 04-Jan-2024]
+[23] “CSS border-radius property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_border-radius.php. [Accessed: 04-Jan-2024]
+[24] “CSS position property.” [Online]. Available: https://www.w3schools.com/cssref/pr_class_position.php. [Accessed: 04-Jan-2024]
+[25] “CSS box-shadow property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_box-shadow.php. [Accessed: 04-Jan-2024]
+[26] “CSS display property.” [Online]. Available: https://www.w3schools.com/cssref/pr_class_display.php. [Accessed: 04-Jan-2024]

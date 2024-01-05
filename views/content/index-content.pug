@@ -1,0 +1,97 @@
+main
+  // [1] Filter section with color, size, and purchase mode filters
+  div#filter
+  // [2]
+  h2 Filters
+  // [3]
+  form(action="/index", method="get", onsubmit="return true;")
+    // Color filter checkboxes
+    .filter-section
+      h3 Color
+      // [5]
+      label
+        // [4]
+        input(type="checkbox", name="color", value="Red", checked=colorFilters.includes("Red"))
+        | Red
+      // [6]
+      br
+      label
+        input(type="checkbox", name="color", value="Green", checked=colorFilters.includes("Green"))
+        | Green
+      br
+      label
+        input(type="checkbox", name="color", value="Blue", checked=colorFilters.includes("Blue"))
+        | Blue
+      br
+      label
+        input(type="checkbox", name="color", value="Black", checked=colorFilters.includes("Black"))
+        | Black
+      br
+    // Size filter checkboxes
+    .filter-section
+      h3 Size
+      label
+        input(type="checkbox", name="size", value="Small", checked=sizeFilters.includes("Small"))
+        | Small
+      br
+      label
+        input(type="checkbox", name="size", value="Medium", checked=sizeFilters.includes("Medium"))
+        | Medium
+      br
+      label
+        input(type="checkbox", name="size", value="Large", checked=sizeFilters.includes("Large"))
+        | Large
+      br
+    // Purchase mode filter checkboxes
+    .filter-section
+      h3 Purchase Mode
+      label
+        input(type="checkbox", name="purchaseMode", value="Buy", checked=purchaseModeFilters.includes("Buy"))
+        | Buy
+      br
+      label
+        input(type="checkbox", name="purchaseMode", value="Rent", checked=purchaseModeFilters.includes("Rent"))
+        | Rent
+      br
+    // Apply and clear filters buttons
+    button(type="submit") Apply Filters
+    a(href="/index" class="clearbtn") Clear Filters
+
+// [1] Listing section with dynamic content based on data availability
+div#listing
+  // [8] Iterate over data and display listing cards
+  if data.length > 0
+    // [7]
+    each item in data
+      .listing-card
+        .bicycle-image
+          img(src=item.Image ? `data:image/jpeg;base64,${item.Image}` : "/img/bicycle.jpg", alt="Bicycle Image", style="width: 100px; height: 100px;")
+        .details
+          h3=item.Title
+          div
+            a(href="/bicycleDetail?id=" + item.Id, class="btnitemDetails")=item.PurchaseMode
+            span(style="padding-left:10px")=item.Price
+              | $
+            // Display delete button if user is logged in
+            if user  
+              a(href="/deletebycycle?id=" + item.Id, class="btnDelete")
+                | Delete
+  else
+    // Display a message when no items are available
+    .listing-card
+      .bicycle-image
+        img(src="/img/noitem.jpg", alt="No Item Image", style="width: 100px; height: 100px;")
+      .details
+        h3 No items available
+        div
+          | Sorry, no items are available at the moment.
+
+// REFERENCES:
+// [1] “HTML div tag.” [Online]. Available: https://www.w3schools.com/tags/tag_div.ASP. [Accessed: 27-Dec-2023]
+// [2] “HTML h1 to h6 tag.” [Online]. Available: https://www.w3schools.com/tags/tag_hn.asp. [Accessed: 04-Jan-2024]
+// [3] “HTML form tag.” [Online]. Available: https://www.w3schools.com/tags/tag_form.asp. [Accessed: 04-Jan-2024]
+// [4] “HTML input tag.” [Online]. Available: https://www.w3schools.com/tags/tag_input.asp. [Accessed: 04-Jan-2024]
+// [5] “HTML label tag.” [Online]. Available: https://www.w3schools.com/tags/tag_label.asp. [Accessed: 04-Jan-2024]
+// [6] “HTML br tag.” [Online]. Available: https://www.w3schools.com/tags/tag_br.asp. [Accessed: 04-Jan-2024]
+// [7] “Iteration – Pug” [Online]. Available: https://pugjs.org/language/iteration.html. [Accessed: 27-Dec-2023]
+// [8] “Conditionals – Pug” [Online]. Available: https://pugjs.org/language/conditionals.html. [Accessed: 04-Jan-2024]

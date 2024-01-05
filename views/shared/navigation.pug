@@ -1,0 +1,34 @@
+// [1] Create navigation links
+nav
+  // [2] Logo link
+  div#logo: a(href="/") Logo
+  // [2] Home link
+  div: a(href="/") Home
+  // [2] Bicycle link
+  div: a(href="/index") Bicycle
+
+  // [3] Conditional block for user authentication
+  if user
+    // [2] Add New Bicycle link for authenticated users
+    div: a(href="/addnewbicycle") Add New Bicycle
+    // [14-18] User dropdown for authenticated users
+    div#user-dropdown.dropdown
+      // [2]
+      a(href="#") Welcome #{user.name} &#9662;
+        // [19-21] Dropdown content for authenticated users
+        .dropdown-content
+          // [2]
+          a(href="/profile") Profile
+          // [2]
+          a(href="/logout") Logout
+  else
+    // [2] Register link for non-authenticated users
+    div: a(href="/register") Register
+    // [2] Login link for non-authenticated users
+    div: a(href="/login") Login
+
+// REFERENCES:
+// [1] “HTML nav Tag.” [Online]. Available: https://www.w3schools.com/tags/tag_nav.asp. [Accessed: 04-Jan-2024]
+// [2] “HTML a tag.” [Online]. Available: https://www.w3schools.com/tags/tag_a.asp. [Accessed: 04-Jan-2024]
+// [3] “Conditionals – Pug” [Online]. Available: https://pugjs.org/language/conditionals.html. [Accessed: 04-Jan-2024]
+
