@@ -1,118 +1,146 @@
 
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  form {
-    max-width: 400px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    float: left;
-    font-size: 12px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  nav {
-    background-color: #f0f0f0;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center; 
+  font-family: 'Arial', sans-serif; /* Setting background color */
+  background-color: #f2f2f2;/* [4] */
+  margin: 0; /* [2] */ /* Removing default padding */
+  padding: 0; /* [3] */
+}
+
+h1 {
+  text-align: center; /* [1] */
+  color: #333;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto; /* [2] */
+  background-color: #fff;/* [4] */
+  padding: 20px; /* [3] */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  float: left;
+  font-size: 12px;
+}
+
+input {
+  width: 100%;/* [9] */
+  padding: 8px; /* [3] */
+  margin-bottom: 10px;    /* Adding margin below input fields */
+  box-sizing: border-box;/* [12] */
+}
+
+button {
+  background-color: #4caf50;/* [4] */
+  color: #fff;
+  padding: 10px; /* [3] */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;/* [8] *//* Changing cursor on hover */
+  width: 100%;/* [9] */
+}
+
+button:hover {
+  background-color: #45a049;/* [4] */
+}
+
+nav {
+  background-color: #f0f0f0;/* [4] */
+  padding: 10px; /* [3] */
+  display: flex;  /* Using flexbox for layout */
+  justify-content: space-around;/* [11] */ /* Distributing items evenly */
+  align-items: center; /* Centering items vertically */
 }
 
 nav div {
-    text-align: center;
-    margin: 0;
+  text-align: center;/* [1] */
+  margin: 0; /* [2] */
 }
 
 nav div a {
-    text-decoration: none;
-    color: #333;
+  text-decoration: none;/* [5] */ /* Removing underline from links */
+  color: #333;
 }
 
 #logo {
-    width: 200px;
-    height: 200px;
-    background-image: url('/img/logo.PNG'); 
-    background-size: cover; 
-    background-position: center; 
-    line-height: 200px;
-    cursor: pointer;
+  width: 200px;/* [9] */
+  height: 200px;
+  background-image: url('/img/logo.PNG'); /* [6] */
+  background-size: cover; /* [7] */
+  background-position: center; 
+  line-height: 200px;
+  cursor: pointer;/* [8] */
 }
 
 #user-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative; /* Positioning relative to its normal position */
+  display: inline-block;
 }
-
+/* Styling for dropdown content links */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;/* [4] */
+  min-width: 160px; /* [13] */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;/* [10] */
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px; /* [3] */
+  text-decoration: none;/* [5] */
+  display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;/* [4] *//* Changing background color on hover */
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 
 .radio-label {
-  display: flex;
-  margin-bottom: 10px; /* Adjust the spacing between radio buttons */
+display: flex; /* Using flexbox for layout */
+margin-bottom: 10px; /* Adjust the spacing between radio buttons */
+}
+/* Adjusting spacing between radio button and label text */
+.radio-label label {
+margin-right: 10px; /* Adjust the spacing between radio button and label text */
 }
 
-.radio-label label {
-  margin-right: 10px; /* Adjust the spacing between radio button and label text */
-}
+/* Refrences 
+[1] “CSS text-align property.” [Online]. Available: https://www.w3schools.com/cssref/pr_text_text-align.php. [Accessed: 04-Jan-2024] 
+
+[2] “CSS Margin.” [Online]. Available: https://www.w3schools.com/css/css_margin.asp. [Accessed: 28-Dec-2023]
+
+[3] “CSS Padding.” [Online]. Available: https://www.w3schools.com/css/css_padding.asp. [Accessed: 28-Dec-2023]
+
+[4] “CSS background-color property.” [Online]. Available: https://www.w3schools.com/cssref/pr_background-color.php. [Accessed: 28-Dec-2023]
+
+[5] “CSS text-decoration property.” [Online]. Available: https://www.w3schools.com/cssref/pr_text_text-decoration.php. [Accessed: 28-Dec-2023]
+
+[6] “CSS background-image property.” [Online]. Available: https://www.w3schools.com/cssref/pr_background-image.php. [Accessed: 28-Dec-2023]
+
+[7] “CSS background-size property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_background-size.php. [Accessed: 28-Dec-2023]
+
+[8] “CSS cursor property.” [Online]. Available: https://www.w3schools.com/cssref/pr_class_cursor.php. [Accessed: 28-Dec-2023]
+
+[9] “CSS width property.” [Online]. Available: https://www.w3schools.com/cssref/pr_dim_width.php. [Accessed: 28-Dec-2023]
+
+[10]
+“CSS z-index property.” [Online]. Available: https://www.w3schools.com/cssref/pr_pos_z-index.php. [Accessed: 04-Jan-2024]
+[11]
+“CSS justify-content property.” [Online]. Available: https://www.w3schools.com/cssref/css3_pr_justify-content.php. [Accessed: 04-Jan-2024]
+[12]
+“CSS Box Sizing.” [Online]. Available: https://www.w3schools.com/css/css3_box-sizing.asp. [Accessed: 04-Jan-2024]
+[13]
+“CSS min-width property.” [Online]. Available: https://www.w3schools.com/cssref/pr_dim_min-width.php. [Accessed: 04-Jan-2024]
