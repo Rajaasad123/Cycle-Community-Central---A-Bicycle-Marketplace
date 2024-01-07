@@ -57,34 +57,34 @@ main
     button(type="submit") Apply Filters
     a(href="/index" class="clearbtn") Clear Filters
 
-// [1] Listing section with dynamic content based on data availability
-div#listing
-  // [8] Iterate over data and display listing cards
-  if data.length > 0
-    // [7]
-    each item in data
+  // [1] Listing sectinon with dynamic content based on data availability
+  div#listing
+    // [8] Iterate over data and display listing cards
+    if data.length > 0
+      // [7]
+      each item in data
+        .listing-card
+          .bicycle-image
+            img(src=item.Image ? `data:image/jpeg;base64,${item.Image}` : "/img/bicycle.jpg", alt="Bicycle Image", style="width: 100px; height: 100px;")
+          .details
+            h3=item.Title
+            div
+              a(href="/bicycleDetail?id=" + item.Id, class="btnitemDetails")=item.PurchaseMode
+              span(style="padding-left:10px")=item.Price
+                | $
+              // Display delete button if user is logged in
+              if user  
+                a(href="/deletebycycle?id=" + item.Id, class="btnDelete")
+                  | Delete
+    else
+      // Display a message when no items are available
       .listing-card
         .bicycle-image
-          img(src=item.Image ? `data:image/jpeg;base64,${item.Image}` : "/img/bicycle.jpg", alt="Bicycle Image", style="width: 100px; height: 100px;")
+          img(src="/img/noitem.jpg", alt="No Item Image", style="width: 100px; height: 100px;")
         .details
-          h3=item.Title
+          h3 No items available
           div
-            a(href="/bicycleDetail?id=" + item.Id, class="btnitemDetails")=item.PurchaseMode
-            span(style="padding-left:10px")=item.Price
-              | $
-            // Display delete button if user is logged in
-            if user  
-              a(href="/deletebycycle?id=" + item.Id, class="btnDelete")
-                | Delete
-  else
-    // Display a message when no items are available
-    .listing-card
-      .bicycle-image
-        img(src="/img/noitem.jpg", alt="No Item Image", style="width: 100px; height: 100px;")
-      .details
-        h3 No items available
-        div
-          | Sorry, no items are available at the moment.
+            | Sorry, no items are available at the moment.
 
 // REFERENCES:
 // [1] “HTML div tag.” [Online]. Available: https://www.w3schools.com/tags/tag_div.ASP. [Accessed: 27-Dec-2023]

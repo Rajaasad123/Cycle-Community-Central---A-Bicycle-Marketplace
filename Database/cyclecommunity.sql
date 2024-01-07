@@ -105,15 +105,7 @@ INSERT INTO `comments` (`Id`, `Comment`, `Datetime`, `bycycleId`) VALUES
 --
 -- Table structure for table `users`
 --
-
-CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_bin NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_bin NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-)
+\
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
